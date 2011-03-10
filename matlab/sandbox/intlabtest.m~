@@ -1,0 +1,4 @@
+params = [1.4 0.3];
+
+fvec = @(v) [1 - params(1) * v(1) * v(1) + v(2), params(2) * v(1)];
+fmat = @(V) [1 - params(1) * V(:,1) .* V(:,1) + V(:,2), params(2) * V(:,1)];

@@ -1,0 +1,2 @@
+function map = insert_attractor(map,p,iter,depth)
+  

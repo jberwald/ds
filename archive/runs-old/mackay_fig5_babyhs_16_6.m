@@ -1,0 +1,1 @@
+E = babyhs('henon',16,6,'params',intval([5.4,-1]))

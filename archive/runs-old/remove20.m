@@ -1,0 +1,15 @@
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 9); save remove_20_9.mat
+[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 10); save remove_20_10.mat
+[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 11); save remove_20_11.mat
+[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 12); save remove_20_12.mat
+[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 13); save remove_20_13.mat
+[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 14); save remove_20_14.mat
+[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 15); save remove_20_15.mat
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 8); save remove_20_8.mat
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 7); save remove_20_7.mat
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 6); save remove_20_6.mat
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 5); save remove_20_5.mat
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 4); save remove_20_4.mat
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 3); save remove_20_3.mat
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 2); save remove_20_2.mat
+%[R G M SM X A I tree P Adj Z] = remove_driver('henon', 20, 1); save remove_20_1.mat

@@ -1,0 +1,4 @@
+function B = schop_interval(b,k)
+% function B = chop_interval(b,k)
+% chops the interval b into k equal pieces. if b is a vector of intervals, it
+% slices the corresponding box (of dimension length(b)) into k 

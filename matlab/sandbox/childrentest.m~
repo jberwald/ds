@@ -1,0 +1,6 @@
+n = 100;
+P = sparse(rand(n,n)>0.8);
+S = 1:log(n);
+T = find_children(P,S);
+To = find_children_old(P,S);
+

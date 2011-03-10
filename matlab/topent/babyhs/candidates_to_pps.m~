@@ -1,0 +1,45 @@
+function PP = candidates_to_pps(C,P,Adj)
+  
+  max_period = length(C);
+  
+  PP = {};
+
+  for p = 1 : max_period
+	if (length(C{p}) == 0)
+ 	  continue;
+ 	end
+	PP_p = add_orbits(C{p}, p, P, Adj);
+	PP = vertcat(PP,PP_p); % append C_p
+  end	
+
+  if (~isempty(PP))
+	[uPP inds] = cell_unique(PP(:,1));
+	PP = PP(inds,:);
+  end
+end
+
+
+function C = add_orbits(orbits, period, P, Adj)
+
+  C = {};
+
+  while (length(orbits) > 0)
+
+  	new_orbit = cycle(orbits(1), P, period);  % new periodic orbit
+
+	if (isempty(new_orbit))
+	  orbits = orbits(2:end); 			% remove the point
+	  continue;
+	end
+
+	new_inv = grow_iso_raf(new_orbit, P, Adj); % grow an isolated invariant set
+	new_nhood = onebox(new_inv, Adj);
+	orbits = setdiff(orbits, new_nhood); % remove the nhood from the rest
+% 	orbits = setdiff(orbits, new_orbit); % picks out the same sets, but slower
+
+	n = num_regions(new_inv,Adj);
+	C = vertcat(C,{new_inv n});
+
+%	fprintf('orbit %i: period %i, real period %i\n',size(C,1),period,n);
+  end
+end  

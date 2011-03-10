@@ -1,0 +1,34 @@
+function B = pp_raf(map, period, depth)
+
+% pp_raf - periodic points.
+%   B = pp(map, period, depth)
+%   computation of the set of periodic points of a certain period. 
+
+hit = 1;
+to_be_subdivided = 8;
+
+for d = map.depth : depth
+  P = rigorous_matrix(map);
+  C = periodic_candidates(P,period)
+  
+  if d < depth
+    S = cat(2,C{:});
+    map.tree = crop_tree(map.tree,S);
+    if (map.tree.depth == 0)
+      disp(sprintf('No candidates remain at depth %d.',d))
+      return;
+    end
+    close; plotb(map.tree); pause
+    for i = 1 : map.tree.dim
+      map.tree.set_flags('all', to_be_subdivided);
+      map.tree.subdivide;
+    end
+  end
+  disp(sprintf('step %d: %d boxes, depth = %d', d, map.tree.count(-1), d));
+end
+
+boxes = map.tree.boxes(-1);
+B = {};
+for i = 1:length(C)
+  B{i} = boxes(:,C{i});
+end

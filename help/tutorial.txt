@@ -1,0 +1,310 @@
+Tutorial for <insert clever project name here>:
+
+In this short tutorial I'll walk you through defining a map (in this
+case, the Henon map), and then some simple computations on it like
+finding periodic orbits and computing some topological entropy bounds.
+Before we begin, make sure you've installed everything as per the
+instructions in setup.txt.  All of the following is summarized in the
+tutorial.m file.
+
+
+Part 1: Defining the Map
+
+In general, to use this tool you will need two things: a map, and a
+rough idea of what part of the phase space you want to look at.  This
+is essentially what is encoded in the map initialization file, stored
+in the matlab/maps directory.
+
+To make an initialization file, first pick a name for your map.  I'm
+going to pick 'tutorialhenon'.  Then, create a matlab file
+init_<nameofyourmap>.m in the matlab/maps directory.  This will be a
+function with no arguments which returns a map object (just a matlab
+struct).  So, in my case, I'm going to create
+matlab/maps/init_tutorialhenon.m and start off that file like so:
+
+function mapobj = init_tutorialhenon
+  mabobj = struct;
+
+Now for the required fields: 'params', 'space', 'mapfunc', and
+'boxfunc'.  The first two are the most straightforward: 'params' is a
+vector of the default parameters, and 'space' is a description of the
+topology of the embedded space.  For this example, with paramaters a
+and b for Henon, I'd write:
+
+  mapobj.params = [1.4 0.3]; % classic parameters
+  mapobj.space = 'Rn';
+
+The other two fields are more complicated in that they are functions
+of parameters.  The 'boxfunc' field takes the parameters and returns
+the bounding box in the phase space for the corresponding map.  First
+let's define a separate function that does this, called 'get_box' (you
+can call it whatever you want) and put it further down in the file:
+
+function [center radius] = get_box(params)
+  % convention: params = [a b]
+  center = [0 0]; % the box will be centered at the origin
+  B = abs(params(2))+1;
+  A = abs(params(1));
+  R = (B + sqrt(B^2 + 4*A))/2;
+  R = sup(R);
+  radius = [R R]; % so, the diagonal of the box goes from (-R,-R) to (R,R)
+end
+
+For any parameters of the map, we have now told the algorithm where in
+the phase space to look for interesting dynamics.  Note that you
+should err on the large side; you must guarantee that what you are
+looking for is in this box, and given that, the smaller you can make
+it the more efficient the computations will be.  Note also that I used
+the 'sup(...)' command in there, which is an Intlab command; if you
+want to work with parameter intervals, you will need to make sure this
+function will work with Intlab 'intval' inputs.
+
+To encode this box function in the map object, we add a line to the
+'init_tutorialhenon' function:
+
+  mapobj.boxfunc = @(params) get_box(params);
+
+This is an implicit function (in general '@(x) FOO' is a function that
+takes one input and returns FOO).  Now let's define the map itself,
+creating as before another function in the same file, called 'the_map'
+(again, you can name this something more interesting):
+
+function map = the_map(params)
+  % returns the Henon map f_{a,b}(x,y) = (1-a*x^2 + y, b*x)
+  map = @(v) [1 - params(1)*v(1)*v(1) + v(2), params(2)*v(1)];
+end
+
+Note that this function does not compute the map, but instead returns
+yet another function with the parameters hard-coded, and /that/
+function will compute the map when given a point (or Intlab interval).
+As before, we have to add this information to the map object:
+
+  mapobj.mapfunc = @(params) the_map(params);
+
+And that's it, we are ready to load the map.  You can look at the
+final result of all this in matlab/maps/init_tutorialhenon.m
+
+
+Part 2: Loading the Map
+
+Let's play around with our newly defined map in matlab.  Upon starting
+matlab (in the root directory) you should see a bunch of Intlab
+output, ending with:
+
+=========================================================================
+*****  Free for private and academic use. Commercial use or use in  *****
+*****  conjunction with a commercial program which requires INTLAB  *****
+*****  or part of INTLAB to functioning properly is prohibited.     *****
+=========================================================================
+
+If not, something is awry; check out setup.txt to make sure you set
+things up correctly.  To use our map, we'll make use of the slightly
+clever 'get_map' function.  Let's load the map at depth 8:
+
+>> map = get_map('tutorialhenon',8) % get_map(mapname,depth)
+data/tutorialhenon_depth_8_center_0.000000_0.000000_radius_2.000000_2.000
+000_params_1.400000_0.300000
+step 1: 4 boxes in I, 4 boxes total
+step 2: 8 boxes in I, 8 boxes total
+step 3: 15 boxes in I, 19 boxes total
+step 4: 36 boxes in I, 45 boxes total
+step 5: 94 boxes in I, 116 boxes total
+step 6: 235 boxes in I, 263 boxes total
+step 7: 565 boxes in I, 603 boxes total
+step 8: 1367 boxes in I, 1399 boxes total
+map = 
+     params: [1.4000 0.3000]
+    mapfunc: @(params) the_map(params)
+    boxfunc: @(params) get_box(params)
+      space: 'Rn'
+     center: [0 0]
+     radius: [2 2]
+        map: [1x1 function_handle]
+       name: 'tutorialhenon'
+      depth: 8
+     prefix: [1x93 char]
+       tree: [1x1 Tree]
+          P: [1399x1399 double]
+        Adj: [1399x1399 double]
+          I: [1x1367 double]
+
+This starts with one box (the bounding box given by 'get_box' above)
+and subdivides it 8 times in each direction, computing the invariant
+set as it goes (the set 'I') and throwing out the other
+(uninteresting) boxes.  Additionally, it saves the map for you in case
+you want to go back to it later; the next time you make the same call,
+the map will load in a split second, since it is just reading the
+already computed map data from the 'data' directory.
+
+Let's look briefly at what has been computed for us here:
+
+tree - the GAIO binary tree structure which stores the boxes
+P - a sparse transition matrix representing the combinatorial map
+Adj - a sparse adjacency matrix for the topology of our space
+I - the maximal invariant set of the map
+prefix - a string id for the map (used for loading and saving)
+
+Now that our map is loaded, let's get to the computations.
+
+
+Part 3: Simple Computations
+
+Now for some dirty work, which we'll see is actually pretty clean.
+Let's load the map again if it's not already loaded:
+
+>> map = get_map('tutorialhenon',8)
+data/tutorialhenon_depth_8_center_0.000000_0.000000_radius_2.000000_2.000
+000_params_1.400000_0.300000
+
+For starters, we can try to isolate some periodic points and prove
+their existence.  Let's see if we can find some period 2 orbits in our
+map.  To do this, we want to look at the diagonal of square of the
+transition matrix (all boxes that map back to themselves after 2
+iterations).
+
+>> S = find(diag(map.P^2));
+
+From here, we want to see what symbolic dynamics can be found from
+this set of boxes (S).  Fortunately, all of the legwork is wrapped up
+into one quite powerful routine: 'compute_symbolics'.  As we'll see,
+this pretty much does everything for us:
+
+>> dat = compute_symbolics(S,map)
+growing isolated invariant set... 31 boxes total
+building index pair...
+finding connected regions... 4 regions found
+computing index map... {0, 4} generators total (h30917)
+reducing index map... entropy = 0.000000
+dat = 
+        R: {4x1 cell}
+        G: {{1x4 cell}  {1x4 cell}}
+        M: {[]  [4x4 double]}
+       SM: {[]  [4x4 double]}
+        X: [1x50 double]
+        A: [1x19 double]
+        I: [1x31 double]
+    G_inv: {[]  {1x4 cell}}
+    M_inv: {[]  [4x4 double]}
+    idstr: 'h30917'
+>> showip(map,dat)
+
+The whole computation should take a few seconds, and if you are
+running with graphics, you should see a figure with the index pair
+too.  This 'dat' struct contains all the relevant results from the
+computation:
+
+R - the disjoint regions of the invariant set
+G - cell array of mappings from regions to generators
+M - the index maps
+SM - the computed subshift
+(X,A) - the index pair
+I - the invariant set (I = X / A)
+G_inv, M_inv - the generators and index map after processing
+idstr - a unique id if you want to recover the actual homcubes output
+
+Since there are often multiple levels of homology, G and M (and *_inv)
+are actually a cell array with an entry for each level.  For example,
+in our case we see from the output that there are "{0, 4} generators
+total" -- this means that the first level of homology has nothing, but
+the second level has four generators.  So let's see what the subshift
+of finite type is from the second level of homology:
+
+>> dat.SM{2}
+ans =
+   (1,1)        1
+   (3,2)        1
+   (2,3)        1
+   (4,4)        1
+
+Lo and behold, we have snagged a period 2 orbit!  And by "snagged", I
+mean "proved the existence of".  Two fixed points also came along for
+the ride (if we didn't want these, we could have taken S =
+setdiff(find(diag(P^2)),find(diag(map.P))) above).  The symbols in the
+matrix are labeled by region, so we know that regions 2 and 3 are the
+period 2 orbit; if we want to find the actual box numbers
+corresponding to these regions we could look at dat.R{2} and dat.R{3}.
+
+
+Part 4: The Quest for Entropy
+
+With some experience under our belt, let us boldly take on the noble
+quest of computing a non-zero rigorous lower bound on topological
+entropy for the Henon map.  It will be a little easier if we go to the
+next depth up (9), which we can do in two ways.  First, we could
+simply call:
+
+>> map = get_map('tutorialhenon',9);
+
+Or, if we were feeling particularly clever or impatient, and we knew
+that we did not have the map already saved at depth 9 (which
+presumably you don't, if you followed this tutorial closely), we
+instead say:
+
+>> map = refine_map(map,9);
+step 9: 3289 boxes in I, 3318 boxes total
+data/tutorialhenon_depth_9_center_0.000000_0.000000_radius_2.000000_2.000
+000_params_1.400000_0.300000
+
+This will start with the given map and only compute the final step,
+instead of starting from scratch and doing all 9.  Now let's construct
+a simple horseshoe structure using the period finding from above and
+the 'find_connections' function to connect things up.  To save you
+some trial and error, I'll suggest we try the period 2 and period 4
+orbits:
+
+>> per2 = setdiff(find(diag(map.P^2)),find(diag(map.P))); % 2 but not 1
+>> per4 = setdiff(find(diag(map.P^4)),per2);              % 4 but not 2
+>> conns24 = find_connections(per2,per4,map.P);           % connections
+>> S = union(union(per2,per4),conns24);                   % everything
+
+All I've done here is gathered boxes around the periodic orbits and
+then found connections between them (using shortest path algorithms).
+Everything is wrapped up in S, so we are ready to plug it into our
+workhorse, 'compute_symbolics':
+
+>> dat = compute_symbolics(S,map)
+growing isolated invariant set... 1289 boxes total
+building index pair...
+finding connected regions... 25 regions found
+computing index map... {0, 39} generators total (Y27022)
+reducing index map... entropy = 0.382245
+>> prettypictures(map,dat)
+
+And there you have it, some entropy!  If you are curious, you can take
+a look at the subshift which we have proven to be semi-conjugate to
+the original system:
+
+>> dat.SM{2}
+ans =
+   (1,1)        1
+   (9,6)        1
+  (12,6)        1
+  (13,6)        1
+  (20,9)        1
+  (16,12)       1
+   (6,13)       1
+  (25,16)       1
+  (25,17)       1
+  (22,20)       1
+  (23,20)       1
+  (22,22)       1
+  (23,22)       1
+  (17,23)       1
+   (6,25)       1
+
+It looks like we didn't use all the symbols / regions.  In fact, we
+can see exactly which symbols are used with the 'graph_mis' function,
+which computes the graph invariant set of any graph (represented by a
+transition matrix).
+
+>> graph_mis(dat.SM{2})'
+ans =
+     1     6     9    12    13    16    17    20    22    23    25
+>> length(ans)
+ans =
+    11
+
+So we actually only used 11 regions of our index pair; the rest
+must've had generators that ended up mapping to 0, or which had to be
+removed in order to prove the semi-conjugacy.  But who cares, we have
+entropy!  Rejoice!

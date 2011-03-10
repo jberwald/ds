@@ -1,0 +1,5 @@
+function PPhyp = hyperbolic_orbits(map,PP)
+  f = @(i) check_hyperbolic_map(PP{i,2},PP{i,1},map);
+  v = filter(1:size(PP,1),f)
+  PPhyp = PP(v,:);
+    

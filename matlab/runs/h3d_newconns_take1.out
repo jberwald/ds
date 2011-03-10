@@ -1,0 +1,88 @@
+cpu_id: x86 Family 15 Model 3 Stepping 4, GenuineIntel
+libmwlapack: loading /usr/local/matlab-2006a/bin/glnx86/atlas_P4.so
+libmwlapack: loading lapack.so
+Warning: Unable to open display , MATLAB is starting without a display.
+  You will not be able to display graphics on the screen.
+Warning: 
+  MATLAB is starting without a display, using internal event queue.
+  You will not be able to display graphics on the screen.
+
+
+                              < M A T L A B >
+                  Copyright 1984-2006 The MathWorks, Inc.
+                         Version 7.2.0.294 (R2006a)
+                              January 27, 2006
+
+ 
+  To get started, type one of these: helpwin, helpdesk, or demo.
+  For product information, visit www.mathworks.com.
+ 
+===> Initialization of INTLAB toolbox
+ 
+**************************************************************
+*** Welcome to INTLAB - INTerval LABoratory Version 5.3    ***
+***   Siegfried M. Rump, Insitute for Realiable Computing  ***
+***   Hamburg University of Technology, Germany            ***
+**************************************************************
+ 
+===> rounding checked and no errors detected
+===> rounding checked and no errors detected
+===> width of display 120 characters
+===> Default display of intervals with uncertainty (e.g. 3.14_) 
+===> Rigorous standard functions in use
+===> Complex interval stdfct used automatically for real interval input 
+         out of range, but with warning
+===> Improved residual calculation in verifylss
+===> Verifylss for dense systems applies second stage only if first stage fails
+===> Fast interval matrix multiplication in use (maximum overestimation 
+         factor 1.5 in radius)
+===> Real interval arrays automatically transformed to complex array 
+         if a component is assigned a complex value (without warning)
+===> Warning issued when complex interval defined by infsup(zinf,zsup)
+===> Long arithmetic computations with error terms, i.e. valid long error bounds
+===> Gradient derivative stored sparse for 50 and more unknowns
+===> Warning issued when accessing .dx of sparse 2-dimensional gradient
+===> Default sparse display of univariate polynomials
+===> Default evaluation univariate polynomials by Horner's scheme
+===> Default evaluation multivariate polynomials by sums of scaled powers
+===> Polynomial function executed with warning if input polynomial does not depend on specified variable
+===> Warning issued when accessing .s of sparse 2-dimensional slope
+===> Hessian derivatives stored sparse for 10 and more unknowns
+===> Warning issued when accessing .dx or .hx of sparse hessian array
+ 
+=========================================================================
+*****  Free for private and academic use. Commercial use or use in  *****
+*****  conjunction with a commercial program which requires INTLAB  *****
+*****  or part of INTLAB to functioning properly is prohibited.     *****
+=========================================================================
+ 
+>> topdata/henon3d_depth_2_center_0.150000_0.150000_0.150000_radius_1.500000_1.500000_1.500000_params_-0.250000_-0.300000_0.440000_0.210000_0.350000
+>> >> >> >> ints = 
+    [3x1 double]
+>> >> >> >> >> growing invariont set...
+>>  . 
+iteration 1: 71 new boxes
+ I has 71 boxes (0.0%)
+ oI has 71 boxes (0.0%)
+ Elapsed time is 0.119231 seconds.
+ inserting next layer... Elapsed time is 0.162006 seconds.
+ . 
+iteration 2: 2072 new boxes
+ I has 2137 boxes (0.0%)
+ oI has 2143 boxes (0.0%)
+ Elapsed time is 2.819132 seconds.
+ inserting next layer... Elapsed time is 6.223993 seconds.
+ . 
+iteration 3: 10390 new boxes
+ I has 11822 boxes (0.1%)
+ oI has 12521 boxes (0.1%)
+ Elapsed time is 802.923318 seconds.
+ inserting next layer... Elapsed time is 115.100052 seconds.
+ . 
+iteration 4: 28623 new boxes
+ I has 37301 boxes (0.2%)
+ oI has 40249 boxes (0.2%)
+ Elapsed time is 15506.286440 seconds.
+ inserting next layer... Elapsed time is 878.394293 seconds.
+ . 
+iteration 5: 56185 new boxes

@@ -1,0 +1,10 @@
+map = get_map('logistic',10,'params',3.3);
+[i2c c2i P] = components_raf(map.P);
+boxes = map.tree.boxes(-1);
+x = boxes(1,:);
+y = zeros(1,length(x));
+for c = 1:length(c2i)
+  y(c2i{c}) = c / length(c2i);
+end
+
+plot(x,y)

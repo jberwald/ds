@@ -1,0 +1,10 @@
+k = 4; % max period
+d = 9; % depth
+
+map = get_map('lpa1p_s2',4); 
+C1 = pp_map(map,4,d)
+map = get_map('lpa1p_s2',d); 
+C2 = periodic_candidates(map.P, k)
+
+PP1 = candidates_to_pps(C1,map.P,map.Adj)
+PP2 = candidates_to_pps(C2,map.P,map.Adj) 

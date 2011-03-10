@@ -1,0 +1,16 @@
+A = PP{1,1};
+B = PP{2,1};
+
+AR = get_regions(A,map.Adj)
+BR = get_regions(B,map.Adj) 
+
+CAB = {};               
+CBA = {};                     
+for i = 1:length(AR)
+  for j = 1:length(BR)
+    CAB{i,j} = skinny_connection(AR{i},BR{j},map.P);
+    CBA{j,i} = skinny_connection(BR{j},AR{i},map.P);
+  end
+end
+
+

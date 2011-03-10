@@ -1,0 +1,818 @@
+cpu_id: x86 Family 15 Model 3 Stepping 4, GenuineIntel
+libmwlapack: loading /usr/local/matlab-2006a/bin/glnx86/atlas_P4.so
+libmwlapack: loading lapack.so
+Warning: Unable to open display , MATLAB is starting without a display.
+  You will not be able to display graphics on the screen.
+Warning: 
+  MATLAB is starting without a display, using internal event queue.
+  You will not be able to display graphics on the screen.
+
+
+                              < M A T L A B >
+                  Copyright 1984-2006 The MathWorks, Inc.
+                         Version 7.2.0.294 (R2006a)
+                              January 27, 2006
+
+ 
+  To get started, type one of these: helpwin, helpdesk, or demo.
+  For product information, visit www.mathworks.com.
+ 
+===> Initialization of INTLAB toolbox
+ 
+**************************************************************
+*** Welcome to INTLAB - INTerval LABoratory Version 5.3    ***
+***   Siegfried M. Rump, Insitute for Realiable Computing  ***
+***   Hamburg University of Technology, Germany            ***
+**************************************************************
+ 
+===> rounding checked and no errors detected
+===> rounding checked and no errors detected
+===> width of display 120 characters
+===> Default display of intervals with uncertainty (e.g. 3.14_) 
+===> Rigorous standard functions in use
+===> Complex interval stdfct used automatically for real interval input 
+         out of range, but with warning
+===> Improved residual calculation in verifylss
+===> Verifylss for dense systems applies second stage only if first stage fails
+===> Fast interval matrix multiplication in use (maximum overestimation 
+         factor 1.5 in radius)
+===> Real interval arrays automatically transformed to complex array 
+         if a component is assigned a complex value (without warning)
+===> Warning issued when complex interval defined by infsup(zinf,zsup)
+===> Long arithmetic computations with error terms, i.e. valid long error bounds
+===> Gradient derivative stored sparse for 50 and more unknowns
+===> Warning issued when accessing .dx of sparse 2-dimensional gradient
+===> Default sparse display of univariate polynomials
+===> Default evaluation univariate polynomials by Horner's scheme
+===> Default evaluation multivariate polynomials by sums of scaled powers
+===> Polynomial function executed with warning if input polynomial does not depend on specified variable
+===> Warning issued when accessing .s of sparse 2-dimensional slope
+===> Hessian derivatives stored sparse for 10 and more unknowns
+===> Warning issued when accessing .dx or .hx of sparse hessian array
+ 
+=========================================================================
+*****  Free for private and academic use. Commercial use or use in  *****
+*****  conjunction with a commercial program which requires INTLAB  *****
+*****  or part of INTLAB to functioning properly is prohibited.     *****
+=========================================================================
+ 
+>> topdata/std_depth_8_center_0.500000_0.500000_radius_0.500000_0.500000_params_0.500000
+>> computing homoclinic insertion...
+Computing intersection of stable and unstable manifolds...
+ans =
+  -0.01266419429294   0.48343718510159   0.08430585944826   0.09716988000106
+offset =
+     1.025456947390137e+02
+total connection length: 51
+depth = 16   count = 1018
+computing the map...
+depth = 18   count = 4072
+ans =
+  -0.01266490953746   0.48538387281117   0.01466196793259   0.08251886948601
+offset =
+     1.025456947390137e+02
+total connection length: 59
+depth = 18   count = 1219
+computing the map...
+depth = 20   count = 4876
+ans =
+  -0.01266508835069   0.48635882598646   0.01087784104667   0.07795935316396
+offset =
+     1.025456947390137e+02
+total connection length: 67
+depth = 20   count = 1408
+computing the map...
+depth = 22   count = 5632
+ans =
+  -0.01266513305413   0.48684670490516   0.00812057533847   0.07385760887038
+offset =
+     1.025456947390137e+02
+total connection length: 75
+depth = 22   count = 1610
+computing the map...
+depth = 24   count = 6440
+ans =
+  -0.01266514423000   0.48709074494732   0.00574645793815   0.07069917137633
+offset =
+     1.025456947390137e+02
+total connection length: 83
+depth = 24   count = 1810
+computing the map...
+depth = 26   count = 7240
+ans =
+  -0.01266514702397   0.48721279011411   0.00368848742761   0.06704649893185
+offset =
+     1.025456947390137e+02
+total connection length: 91
+depth = 26   count = 2004
+computing the map...
+depth = 28   count = 8016
+ans =
+  -0.01266514772246   0.48727381898393   0.00260454775553   0.06465611242364
+offset =
+     1.025456947390137e+02
+total connection length: 99
+depth = 28   count = 2175
+computing the map...
+depth = 30   count = 8700
+ans =
+  -0.01266514789708   0.48730433499045   0.00125955130141   0.06177588374917
+offset =
+     1.025456947390137e+02
+total connection length: 108
+depth = 30   count = 2403
+computing the map...
+depth = 32   count = 9612
+ans =
+  -0.01266514794074   0.48731959338661  -0.00063905475589   0.05667022079503
+offset =
+     1.025456947390137e+02
+total connection length: 115
+depth = 32   count = 2608
+computing the map...
+depth = 32   count = 2608
+computing the adjacency matrix and invariant set...
+map = 
+     params: 0.50000000000000
+    mapfunc: @(params) (@(v) the_map(v(1),v(2),params))
+    invfunc: @(params) (@(v) inv_map(v(1),v(2),params))
+    boxfunc: @(params) get_box(params)
+      space: 'torus'
+     center: [0.50000000000000 0.50000000000000]
+     radius: [0.50000000000000 0.50000000000000]
+        map: @(v) the_map(v(1),v(2),params)
+    inverse: @(v) inv_map(v(1),v(2),params)
+       name: 'std'
+      depth: 16
+     prefix: [1x85 char]
+       tree: [1x1 Tree]
+          P: [2608x2608 double]
+        Adj: [2608x2608 double]
+          I: [1525x1 double]
+growing invariont set...
+ . 
+iteration 1: 2608 new boxes
+ I has 1525 boxes (0.0%)
+ oI has 2344 boxes (0.0%)
+ Elapsed time is 0.185625 seconds.
+ inserting next layer... Elapsed time is 10.821231 seconds.
+ . 
+iteration 2: 6308 new boxes
+ I has 3135 boxes (0.0%)
+ oI has 5553 boxes (0.0%)
+ Elapsed time is 3.271814 seconds.
+ inserting next layer... Elapsed time is 36.742252 seconds.
+ . 
+iteration 3: 6388 new boxes
+ I has 4677 boxes (0.0%)
+ oI has 8108 boxes (0.0%)
+ Elapsed time is 6.085402 seconds.
+ inserting next layer... Elapsed time is 71.317720 seconds.
+ . 
+iteration 4: 4138 new boxes
+ I has 6420 boxes (0.0%)
+ oI has 10833 boxes (0.0%)
+ Elapsed time is 14.731607 seconds.
+ inserting next layer... Elapsed time is 110.148080 seconds.
+ . 
+iteration 5: 4701 new boxes
+ I has 7633 boxes (0.0%)
+ oI has 13029 boxes (0.0%)
+ Elapsed time is 17.361825 seconds.
+ inserting next layer... Elapsed time is 148.997458 seconds.
+ . 
+iteration 6: 3806 new boxes
+ I has 8522 boxes (0.0%)
+ oI has 14487 boxes (0.0%)
+ Elapsed time is 18.644134 seconds.
+ inserting next layer... Elapsed time is 180.998982 seconds.
+ . 
+iteration 7: 2603 new boxes
+ I has 9374 boxes (0.0%)
+ oI has 15907 boxes (0.0%)
+ Elapsed time is 18.755922 seconds.
+ inserting next layer... Elapsed time is 209.504651 seconds.
+ . 
+iteration 8: 2409 new boxes
+ I has 10182 boxes (0.0%)
+ oI has 17225 boxes (0.0%)
+ Elapsed time is 25.452675 seconds.
+ inserting next layer... Elapsed time is 238.945019 seconds.
+ . 
+iteration 9: 2378 new boxes
+ I has 11002 boxes (0.0%)
+ oI has 18547 boxes (0.0%)
+ Elapsed time is 24.739414 seconds.
+ inserting next layer... Elapsed time is 269.262298 seconds.
+ . 
+iteration 10: 2306 new boxes
+ I has 11863 boxes (0.0%)
+ oI has 19951 boxes (0.0%)
+ Elapsed time is 28.038122 seconds.
+ inserting next layer... Elapsed time is 302.977120 seconds.
+ . 
+iteration 11: 2625 new boxes
+ I has 12701 boxes (0.0%)
+ oI has 21301 boxes (0.0%)
+ Elapsed time is 37.196089 seconds.
+ inserting next layer... Elapsed time is 337.585651 seconds.
+ . 
+iteration 12: 2282 new boxes
+ I has 13602 boxes (0.0%)
+ oI has 22724 boxes (0.0%)
+ Elapsed time is 47.688590 seconds.
+ inserting next layer... Elapsed time is 373.183679 seconds.
+ . 
+iteration 13: 2583 new boxes
+ I has 14386 boxes (0.0%)
+ oI has 24020 boxes (0.0%)
+ Elapsed time is 39.419375 seconds.
+ inserting next layer... Elapsed time is 409.502726 seconds.
+ . 
+iteration 14: 2276 new boxes
+ I has 15248 boxes (0.0%)
+ oI has 25372 boxes (0.0%)
+ Elapsed time is 50.907192 seconds.
+ inserting next layer... Elapsed time is 447.304935 seconds.
+ . 
+iteration 15: 2337 new boxes
+ I has 16190 boxes (0.0%)
+ oI has 26831 boxes (0.0%)
+ Elapsed time is 63.744469 seconds.
+ inserting next layer... Elapsed time is 490.102099 seconds.
+ . 
+iteration 16: 2621 new boxes
+ I has 17073 boxes (0.0%)
+ oI has 28208 boxes (0.0%)
+ Elapsed time is 61.139635 seconds.
+ inserting next layer... Elapsed time is 534.243945 seconds.
+ . 
+iteration 17: 2419 new boxes
+ I has 17924 boxes (0.0%)
+ oI has 29584 boxes (0.0%)
+ Elapsed time is 56.584697 seconds.
+ inserting next layer... Elapsed time is 575.925846 seconds.
+ . 
+iteration 18: 2357 new boxes
+ I has 18735 boxes (0.0%)
+ oI has 30904 boxes (0.0%)
+ Elapsed time is 61.314750 seconds.
+ inserting next layer... Elapsed time is 619.039755 seconds.
+ . 
+iteration 19: 2328 new boxes
+ I has 19617 boxes (0.0%)
+ oI has 32283 boxes (0.0%)
+ Elapsed time is 88.998884 seconds.
+ inserting next layer... Elapsed time is 666.572775 seconds.
+ . 
+iteration 20: 2406 new boxes
+ I has 20514 boxes (0.0%)
+ oI has 33687 boxes (0.0%)
+ Elapsed time is 95.881428 seconds.
+ inserting next layer... Elapsed time is 717.646868 seconds.
+ . 
+iteration 21: 2492 new boxes
+ I has 21359 boxes (0.0%)
+ oI has 35046 boxes (0.0%)
+ Elapsed time is 90.438725 seconds.
+ inserting next layer... Elapsed time is 767.340099 seconds.
+ . 
+iteration 22: 2359 new boxes
+ I has 22228 boxes (0.0%)
+ oI has 36470 boxes (0.0%)
+ Elapsed time is 111.050123 seconds.
+ inserting next layer... Elapsed time is 820.863007 seconds.
+ . 
+iteration 23: 2489 new boxes
+ I has 23040 boxes (0.0%)
+ oI has 37798 boxes (0.0%)
+ Elapsed time is 104.075554 seconds.
+ inserting next layer... Elapsed time is 874.824365 seconds.
+ . 
+iteration 24: 2333 new boxes
+ I has 23916 boxes (0.0%)
+ oI has 39170 boxes (0.0%)
+ Elapsed time is 111.159430 seconds.
+ inserting next layer... Elapsed time is 930.356908 seconds.
+ . 
+iteration 25: 2397 new boxes
+ I has 24790 boxes (0.0%)
+ oI has 40589 boxes (0.0%)
+ Elapsed time is 136.078204 seconds.
+ inserting next layer... Elapsed time is 988.245894 seconds.
+ . 
+iteration 26: 2549 new boxes
+ I has 25655 boxes (0.0%)
+ oI has 41956 boxes (0.0%)
+ Elapsed time is 126.539821 seconds.
+ inserting next layer... Elapsed time is 1049.126734 seconds.
+ . 
+iteration 27: 2426 new boxes
+ I has 26486 boxes (0.0%)
+ oI has 43323 boxes (0.0%)
+ Elapsed time is 135.074222 seconds.
+ inserting next layer... Elapsed time is 1108.839009 seconds.
+ . 
+iteration 28: 2414 new boxes
+ I has 27305 boxes (0.0%)
+ oI has 44657 boxes (0.0%)
+ Elapsed time is 142.354305 seconds.
+ inserting next layer... Elapsed time is 1170.414823 seconds.
+ . 
+iteration 29: 2374 new boxes
+ I has 28190 boxes (0.0%)
+ oI has 46045 boxes (0.0%)
+ Elapsed time is 150.480991 seconds.
+ inserting next layer... Elapsed time is 1233.948265 seconds.
+ . 
+iteration 30: 2394 new boxes
+ I has 29095 boxes (0.0%)
+ oI has 47492 boxes (0.0%)
+ Elapsed time is 160.309497 seconds.
+ inserting next layer... Elapsed time is 1301.298277 seconds.
+ . 
+iteration 31: 2643 new boxes
+ I has 29932 boxes (0.0%)
+ oI has 48874 boxes (0.0%)
+ Elapsed time is 171.168042 seconds.
+ inserting next layer... Elapsed time is 1383.399330 seconds.
+ . 
+iteration 32: 2401 new boxes
+ I has 30783 boxes (0.0%)
+ oI has 50258 boxes (0.0%)
+ Elapsed time is 188.979522 seconds.
+ inserting next layer... Elapsed time is 1440.419064 seconds.
+ . 
+iteration 33: 2480 new boxes
+ I has 31602 boxes (0.0%)
+ oI has 51600 boxes (0.0%)
+ Elapsed time is 189.482836 seconds.
+ inserting next layer... Elapsed time is 1507.982891 seconds.
+ . 
+iteration 34: 2329 new boxes
+ I has 32478 boxes (0.0%)
+ oI has 52965 boxes (0.0%)
+ Elapsed time is 199.030086 seconds.
+ inserting next layer... Elapsed time is 1578.401204 seconds.
+ . 
+iteration 35: 2503 new boxes
+ I has 33276 boxes (0.0%)
+ oI has 54294 boxes (0.0%)
+ Elapsed time is 238.518459 seconds.
+ inserting next layer... Elapsed time is 1650.175765 seconds.
+ . 
+iteration 36: 2375 new boxes
+ I has 34126 boxes (0.0%)
+ oI has 55666 boxes (0.0%)
+ Elapsed time is 219.479405 seconds.
+ inserting next layer... Elapsed time is 1726.077951 seconds.
+ . 
+iteration 37: 2386 new boxes
+ I has 34985 boxes (0.0%)
+ oI has 57080 boxes (0.0%)
+ Elapsed time is 230.272814 seconds.
+ inserting next layer... Elapsed time is 1801.137671 seconds.
+ . 
+iteration 38: 2566 new boxes
+ I has 35758 boxes (0.0%)
+ oI has 58339 boxes (0.0%)
+ Elapsed time is 241.500705 seconds.
+ inserting next layer... Elapsed time is 1876.106945 seconds.
+ . 
+iteration 39: 2226 new boxes
+ I has 36619 boxes (0.0%)
+ oI has 59705 boxes (0.0%)
+ Elapsed time is 252.148939 seconds.
+ inserting next layer... Elapsed time is 1954.264897 seconds.
+ . 
+iteration 40: 2407 new boxes
+ I has 37458 boxes (0.0%)
+ oI has 61084 boxes (0.0%)
+ Elapsed time is 263.784913 seconds.
+ inserting next layer... Elapsed time is 2033.356919 seconds.
+ . 
+iteration 41: 2483 new boxes
+ I has 38285 boxes (0.0%)
+ oI has 62383 boxes (0.0%)
+ Elapsed time is 299.758539 seconds.
+ inserting next layer... Elapsed time is 2170.983656 seconds.
+ . 
+iteration 42: 2247 new boxes
+ I has 39125 boxes (0.0%)
+ oI has 63736 boxes (0.0%)
+ Elapsed time is 288.213768 seconds.
+ inserting next layer... Elapsed time is 2177.829948 seconds.
+ . 
+iteration 43: 2373 new boxes
+ I has 39969 boxes (0.0%)
+ oI has 65062 boxes (0.0%)
+ Elapsed time is 257.090369 seconds.
+ inserting next layer... Elapsed time is 2280.639088 seconds.
+ . 
+iteration 44: 2378 new boxes
+ I has 40807 boxes (0.0%)
+ oI has 66431 boxes (0.0%)
+ Elapsed time is 268.137667 seconds.
+ inserting next layer... Elapsed time is 2366.969898 seconds.
+ . 
+iteration 45: 2384 new boxes
+ I has 41704 boxes (0.0%)
+ oI has 67824 boxes (0.0%)
+ Elapsed time is 325.260453 seconds.
+ inserting next layer... Elapsed time is 2456.314939 seconds.
+ . 
+iteration 46: 2455 new boxes
+ I has 42527 boxes (0.0%)
+ oI has 69119 boxes (0.0%)
+ Elapsed time is 339.465560 seconds.
+ inserting next layer... Elapsed time is 2545.756190 seconds.
+ . 
+iteration 47: 2292 new boxes
+ I has 43429 boxes (0.0%)
+ oI has 70528 boxes (0.0%)
+ Elapsed time is 349.998977 seconds.
+ inserting next layer... Elapsed time is 2639.783187 seconds.
+ . 
+iteration 48: 2478 new boxes
+ I has 44242 boxes (0.0%)
+ oI has 71884 boxes (0.0%)
+ Elapsed time is 366.018794 seconds.
+ inserting next layer... Elapsed time is 2732.505293 seconds.
+ . 
+iteration 49: 2383 new boxes
+ I has 45090 boxes (0.0%)
+ oI has 73203 boxes (0.0%)
+ Elapsed time is 381.025127 seconds.
+ inserting next layer... Elapsed time is 2825.450896 seconds.
+ . 
+iteration 50: 2327 new boxes
+ I has 46221 boxes (0.0%)
+ oI has 75017 boxes (0.0%)
+ Elapsed time is 567.607781 seconds.
+ inserting next layer... Elapsed time is 2941.472162 seconds.
+ . 
+iteration 51: 3276 new boxes
+ I has 47297 boxes (0.0%)
+ oI has 76704 boxes (0.0%)
+ Elapsed time is 474.133742 seconds.
+ inserting next layer... Elapsed time is 3066.746057 seconds.
+ . 
+iteration 52: 2794 new boxes
+ I has 48134 boxes (0.0%)
+ oI has 78060 boxes (0.0%)
+ Elapsed time is 371.123828 seconds.
+ inserting next layer... Elapsed time is 3174.172666 seconds.
+ . 
+iteration 53: 2408 new boxes
+ I has 48941 boxes (0.0%)
+ oI has 79396 boxes (0.0%)
+ Elapsed time is 382.977640 seconds.
+ inserting next layer... Elapsed time is 3277.301997 seconds.
+ . 
+iteration 54: 2402 new boxes
+ I has 49774 boxes (0.0%)
+ oI has 80789 boxes (0.0%)
+ Elapsed time is 465.465073 seconds.
+ inserting next layer... Elapsed time is 3387.716640 seconds.
+ . 
+iteration 55: 2441 new boxes
+ I has 50612 boxes (0.0%)
+ oI has 82136 boxes (0.0%)
+ Elapsed time is 549.530551 seconds.
+ inserting next layer... Elapsed time is 3483.262665 seconds.
+ . 
+iteration 56: 2382 new boxes
+ I has 51492 boxes (0.0%)
+ oI has 83552 boxes (0.0%)
+ Elapsed time is 499.084059 seconds.
+ inserting next layer... Elapsed time is 3591.337302 seconds.
+ . 
+iteration 57: 2557 new boxes
+ I has 52737 boxes (0.0%)
+ oI has 85399 boxes (0.0%)
+ Elapsed time is 741.291014 seconds.
+ inserting next layer... Elapsed time is 3725.915828 seconds.
+ . 
+iteration 58: 3231 new boxes
+ I has 53551 boxes (0.0%)
+ oI has 86746 boxes (0.0%)
+ Elapsed time is 616.930546 seconds.
+ inserting next layer... Elapsed time is 3849.706092 seconds.
+ . 
+iteration 59: 2300 new boxes
+ I has 54414 boxes (0.0%)
+ oI has 88133 boxes (0.0%)
+ Elapsed time is 567.570687 seconds.
+ inserting next layer... Elapsed time is 3974.332786 seconds.
+ . 
+iteration 60: 2456 new boxes
+ I has 55213 boxes (0.0%)
+ oI has 89437 boxes (0.0%)
+ Elapsed time is 576.206349 seconds.
+ inserting next layer... Elapsed time is 4074.164342 seconds.
+ . 
+iteration 61: 2311 new boxes
+ I has 56018 boxes (0.0%)
+ oI has 90747 boxes (0.0%)
+ Elapsed time is 593.023556 seconds.
+ inserting next layer... Elapsed time is 4184.833511 seconds.
+ . 
+iteration 62: 2316 new boxes
+ I has 56809 boxes (0.0%)
+ oI has 92064 boxes (0.0%)
+ Elapsed time is 612.427741 seconds.
+ inserting next layer... Elapsed time is 4295.757984 seconds.
+ . 
+iteration 63: 2341 new boxes
+ I has 57604 boxes (0.0%)
+ oI has 93330 boxes (0.0%)
+ Elapsed time is 538.543107 seconds.
+ inserting next layer... Elapsed time is 4409.512740 seconds.
+ . 
+iteration 64: 2259 new boxes
+ I has 58467 boxes (0.0%)
+ oI has 94723 boxes (0.0%)
+ Elapsed time is 649.798748 seconds.
+ inserting next layer... Elapsed time is 5795.354372 seconds.
+ . 
+iteration 65: 2494 new boxes
+ I has 59273 boxes (0.0%)
+ oI has 96046 boxes (0.0%)
+ Elapsed time is 615.843229 seconds.
+ inserting next layer... Elapsed time is 4842.486575 seconds.
+ . 
+iteration 66: 2387 new boxes
+ I has 60127 boxes (0.0%)
+ oI has 97394 boxes (0.0%)
+ Elapsed time is 757.567063 seconds.
+ inserting next layer... Elapsed time is 5111.470213 seconds.
+ . 
+iteration 67: 2312 new boxes
+ I has 60924 boxes (0.0%)
+ oI has 98723 boxes (0.0%)
+ Elapsed time is 867.862774 seconds.
+ inserting next layer... Elapsed time is 4852.666041 seconds.
+ . 
+iteration 68: 2458 new boxes
+ I has 61661 boxes (0.0%)
+ oI has 99960 boxes (0.0%)
+ Elapsed time is 730.510481 seconds.
+ inserting next layer... Elapsed time is 5014.798308 seconds.
+ . 
+iteration 69: 2200 new boxes
+ I has 62569 boxes (0.0%)
+ oI has 101371 boxes (0.0%)
+ Elapsed time is 750.133517 seconds.
+ inserting next layer... Elapsed time is 5146.009588 seconds.
+ . 
+iteration 70: 2490 new boxes
+ I has 63391 boxes (0.0%)
+ oI has 102684 boxes (0.0%)
+ Elapsed time is 774.119482 seconds.
+ inserting next layer... Elapsed time is 5274.885448 seconds.
+ . 
+iteration 71: 2325 new boxes
+ I has 64239 boxes (0.0%)
+ oI has 104057 boxes (0.0%)
+ Elapsed time is 795.630741 seconds.
+ inserting next layer... Elapsed time is 5406.909548 seconds.
+ . 
+iteration 72: 2535 new boxes
+ I has 65122 boxes (0.0%)
+ oI has 105472 boxes (0.0%)
+ Elapsed time is 701.203941 seconds.
+ inserting next layer... Elapsed time is 5538.930173 seconds.
+ . 
+iteration 73: 2394 new boxes
+ I has 65934 boxes (0.0%)
+ oI has 106802 boxes (0.0%)
+ Elapsed time is 839.520268 seconds.
+ inserting next layer... Elapsed time is 5688.999371 seconds.
+ . 
+iteration 74: 2363 new boxes
+ I has 66777 boxes (0.0%)
+ oI has 108152 boxes (0.0%)
+ Elapsed time is 864.112206 seconds.
+ inserting next layer... Elapsed time is 5805.129047 seconds.
+ . 
+iteration 75: 2419 new boxes
+ I has 67596 boxes (0.0%)
+ oI has 109499 boxes (0.0%)
+ Elapsed time is 759.052429 seconds.
+ inserting next layer... Elapsed time is 5938.287273 seconds.
+ . 
+iteration 76: 2321 new boxes
+ I has 68401 boxes (0.0%)
+ oI has 110777 boxes (0.0%)
+ Elapsed time is 906.973401 seconds.
+ inserting next layer... Elapsed time is 6072.401373 seconds.
+ . 
+iteration 77: 2296 new boxes
+ I has 69192 boxes (0.0%)
+ oI has 112059 boxes (0.0%)
+ Elapsed time is 929.972187 seconds.
+ inserting next layer... Elapsed time is 6208.046611 seconds.
+ . 
+iteration 78: 2199 new boxes
+ I has 69976 boxes (0.0%)
+ oI has 113353 boxes (0.0%)
+ Elapsed time is 952.745001 seconds.
+ inserting next layer... Elapsed time is 6341.693689 seconds.
+ . 
+iteration 79: 2358 new boxes
+ I has 70745 boxes (0.0%)
+ oI has 114650 boxes (0.0%)
+ Elapsed time is 981.276228 seconds.
+ inserting next layer... Elapsed time is 6482.994514 seconds.
+ . 
+iteration 80: 2398 new boxes
+ I has 71575 boxes (0.0%)
+ oI has 115972 boxes (0.0%)
+ Elapsed time is 1151.121808 seconds.
+ inserting next layer... Elapsed time is 6625.860426 seconds.
+ . 
+iteration 81: 2264 new boxes
+ I has 72352 boxes (0.0%)
+ oI has 117233 boxes (0.0%)
+ Elapsed time is 1028.132685 seconds.
+ inserting next layer... Elapsed time is 6764.912986 seconds.
+ . 
+iteration 82: 2277 new boxes
+ I has 73239 boxes (0.0%)
+ oI has 118643 boxes (0.0%)
+ Elapsed time is 903.217674 seconds.
+ inserting next layer... Elapsed time is 6913.251333 seconds.
+ . 
+iteration 83: 2534 new boxes
+ I has 74020 boxes (0.0%)
+ oI has 119953 boxes (0.0%)
+ Elapsed time is 1074.862760 seconds.
+ inserting next layer... Elapsed time is 7064.819548 seconds.
+ . 
+iteration 84: 2302 new boxes
+ I has 74848 boxes (0.0%)
+ oI has 121301 boxes (0.0%)
+ Elapsed time is 1124.574711 seconds.
+ inserting next layer... Elapsed time is 7365.617583 seconds.
+ . 
+iteration 85: 2452 new boxes
+ I has 75653 boxes (0.0%)
+ oI has 122614 boxes (0.0%)
+ Elapsed time is 1132.097252 seconds.
+ inserting next layer... Elapsed time is 7376.647688 seconds.
+ . 
+iteration 86: 2293 new boxes
+ I has 76461 boxes (0.0%)
+ oI has 123943 boxes (0.0%)
+ Elapsed time is 1156.909210 seconds.
+ inserting next layer... Elapsed time is 7528.429265 seconds.
+ . 
+iteration 87: 2368 new boxes
+ I has 77339 boxes (0.0%)
+ oI has 125336 boxes (0.0%)
+ Elapsed time is 1185.539343 seconds.
+ inserting next layer... Elapsed time is 7688.688580 seconds.
+ . 
+iteration 88: 2509 new boxes
+ I has 78107 boxes (0.0%)
+ oI has 126622 boxes (0.0%)
+ Elapsed time is 1213.311069 seconds.
+ inserting next layer... Elapsed time is 7844.945714 seconds.
+ . 
+iteration 89: 2244 new boxes
+ I has 78955 boxes (0.0%)
+ oI has 127974 boxes (0.0%)
+ Elapsed time is 1241.975998 seconds.
+ inserting next layer... Elapsed time is 8002.338794 seconds.
+ . 
+iteration 90: 2451 new boxes
+ I has 79704 boxes (0.0%)
+ oI has 129213 boxes (0.0%)
+ Elapsed time is 1084.675384 seconds.
+ inserting next layer... Elapsed time is 8160.372788 seconds.
+ . 
+iteration 91: 2264 new boxes
+ I has 80567 boxes (0.0%)
+ oI has 130582 boxes (0.0%)
+ Elapsed time is 1481.123859 seconds.
+ inserting next layer... Elapsed time is 8322.248775 seconds.
+ . 
+iteration 92: 2464 new boxes
+ I has 81319 boxes (0.0%)
+ oI has 131862 boxes (0.0%)
+ Elapsed time is 1135.594537 seconds.
+ inserting next layer... Elapsed time is 8517.333040 seconds.
+ . 
+iteration 93: 2240 new boxes
+ I has 82057 boxes (0.0%)
+ oI has 133088 boxes (0.0%)
+ Elapsed time is 1362.785368 seconds.
+ inserting next layer... Elapsed time is 8660.482731 seconds.
+ . 
+iteration 94: 2278 new boxes
+ I has 82848 boxes (0.0%)
+ oI has 134390 boxes (0.0%)
+ Elapsed time is 1185.065163 seconds.
+ inserting next layer... Elapsed time is 8796.456122 seconds.
+ . 
+iteration 95: 2318 new boxes
+ I has 83566 boxes (0.0%)
+ oI has 135589 boxes (0.0%)
+ Elapsed time is 1410.795162 seconds.
+ inserting next layer... Elapsed time is 8955.932244 seconds.
+ . 
+iteration 96: 2114 new boxes
+ I has 84301 boxes (0.0%)
+ oI has 136815 boxes (0.0%)
+ Elapsed time is 1437.646187 seconds.
+ inserting next layer... Elapsed time is 9470.959211 seconds.
+ . 
+iteration 97: 2270 new boxes
+ I has 85118 boxes (0.0%)
+ oI has 138127 boxes (0.0%)
+ Elapsed time is 1461.870441 seconds.
+ inserting next layer... Elapsed time is 9250.662210 seconds.
+ . 
+iteration 98: 2325 new boxes
+ I has 85838 boxes (0.0%)
+ oI has 139362 boxes (0.0%)
+ Elapsed time is 1283.708030 seconds.
+ inserting next layer... Elapsed time is 9443.372207 seconds.
+ . 
+iteration 99: 2183 new boxes
+ I has 86638 boxes (0.0%)
+ oI has 140659 boxes (0.0%)
+ Elapsed time is 1528.259434 seconds.
+ inserting next layer... Elapsed time is 9612.898095 seconds.
+ . 
+iteration 100: 2356 new boxes
+ I has 87433 boxes (0.0%)
+ oI has 141970 boxes (0.0%)
+ Elapsed time is 1557.295732 seconds.
+ inserting next layer... Elapsed time is 9805.499850 seconds.
+ . 
+iteration 101: 2330 new boxes
+ I has 88171 boxes (0.0%)
+ oI has 143189 boxes (0.0%)
+ Elapsed time is 1591.082796 seconds.
+ inserting next layer... Elapsed time is 9954.575574 seconds.
+ . 
+iteration 102: 2204 new boxes
+ I has 88931 boxes (0.0%)
+ oI has 144449 boxes (0.0%)
+ Elapsed time is 1619.511616 seconds.
+ inserting next layer... Elapsed time is 10125.604479 seconds.
+ . 
+iteration 103: 2268 new boxes
+ I has 89683 boxes (0.0%)
+ oI has 145700 boxes (0.0%)
+ Elapsed time is 1652.228129 seconds.
+ inserting next layer... Elapsed time is 10310.728800 seconds.
+ . 
+iteration 104: 2249 new boxes
+ I has 90417 boxes (0.0%)
+ oI has 146945 boxes (0.0%)
+ Elapsed time is 1711.858309 seconds.
+ inserting next layer... Elapsed time is 10531.619777 seconds.
+ . 
+iteration 105: 2238 new boxes
+ I has 91210 boxes (0.0%)
+ oI has 148200 boxes (0.0%)
+ Elapsed time is 1741.666293 seconds.
+ inserting next layer... Elapsed time is 10725.902504 seconds.
+ . 
+iteration 106: 2262 new boxes
+ I has 91956 boxes (0.0%)
+ oI has 149434 boxes (0.0%)
+ Elapsed time is 1769.858600 seconds.
+ inserting next layer... Elapsed time is 10905.656165 seconds.
+ . 
+iteration 107: 2194 new boxes
+ I has 92709 boxes (0.0%)
+ oI has 150672 boxes (0.0%)
+ Elapsed time is 1803.843270 seconds.
+ inserting next layer... Elapsed time is 11063.911285 seconds.
+ . 
+iteration 108: 2260 new boxes
+ I has 93448 boxes (0.0%)
+ oI has 151926 boxes (0.0%)
+ Elapsed time is 1834.186706 seconds.
+ inserting next layer... Elapsed time is 11204.661060 seconds.
+ . 
+iteration 109: 2264 new boxes
+ I has 94163 boxes (0.0%)
+ oI has 153131 boxes (0.0%)
+ Elapsed time is 1870.870291 seconds.
+ inserting next layer... Elapsed time is 11427.453759 seconds.
+ . 
+iteration 110: 2162 new boxes
+ I has 94916 boxes (0.0%)
+ oI has 154386 boxes (0.0%)
+ Elapsed time is 1907.839502 seconds.
+ inserting next layer... Elapsed time is 11607.754944 seconds.
+ . 
+iteration 111: 2273 new boxes
+ I has 95689 boxes (0.0%)
+ oI has 155656 boxes (0.0%)
+ Elapsed time is 1939.910631 seconds.
+ inserting next layer... 

@@ -1,0 +1,13 @@
+function tikzsymbolgraph(A,top)
+  [d dt ft pred] = dfs(A',top);
+  preimgtop = mapimage(A',top);
+  lines = {};
+  for i = preimgtop
+    lines{end+1} = [i];
+    while lines{end}[end] ~= top
+      lines{end} = [pred(lines{end}) lines{end}];
+    end
+  end
+  
+  
+    

@@ -1,0 +1,98 @@
+Intallation for <insert clever project name here>
+
+
+1. Dependencies
+
+The code requires CHomP, GAIO, and Intlab to be intalled.  As of this
+writing, they can be obtained as follows:
+
+CHomP:  http://chomp.rutgers.edu/download/chomp-full.zip
+Intlab: http://www.ti3.tu-harburg.de/rump/intlab/intlab.tar.gz
+GAIO:   currently unavailable?
+
+
+1.1. CHomP
+
+You will probably need to compile CHomP, a sometimes tricky task.  A
+few problems which may come up and their solutions:
+
+  Problem: 'EOF' undefined errors in compile, or other similar errors
+
+  Solution: Try using an earlier version of gcc (g++-4.1 worked fine
+  for me, but g++-4.4 did not).  To do this, install the previous
+  version of gcc and then change the chomp/make/config/unx CXX line
+  accordingly (in my case, I changed "CXX = g++" to "CXX = g++-4.1"
+  
+
+CHomP needs to be on the system path.  That is, typing 'which
+homcubes' from the command line will tell you where it is.  If you
+intall CHomP in /usr/local/chomp, then using bash you would add the
+following to the end of your .bashrc or .bash_login file:
+
+PATH=$PATH:/usr/local/chomp/bin/:/usr/local/gaio-2.2.8/bin/:.
+export PATH
+
+You will have to log in again before this works.
+
+
+1.2. GAIO and Intlab
+
+The other two, GAIO and Intlab, only have to be visible within Matlab.
+Just have the paths to the directories for these two handy for the
+next step.  You may find that the Intlab startup is annoying; to shut
+it off look for startintlab.m in the Intlab folder and comment out
+these lines (near the bottom):
+
+  intlablogo([0:4:32 32:-4:24 24:4:32])
+  pause(0.5)
+  close
+
+
+
+2. Intallation
+
+Have the GAIO and Intlab paths handy and cd to the 'help' directory,
+and run the install.sh script.  This will create a startup.m file with
+the path information, and do some other setupy things.  Look at
+help/tutorial.txt for a gentle introduction.  To have all the code and
+paths loaded correctly, start Matlab in the root directory for this
+code base (as of this writing, 'ds'), where the startup.m file is.
+
+May the entropy be with you.
+
+
+Appendix. Bizarre Errors That May Come Up
+
+- If you get tree.dim errors or if 'which adj_matrix' points to GAIO,
+check your path by typing 'path' in matlab.  The first entries in the
+list should point to this project, so if this is not the case, you'll
+need to disable whatever is putting extra stuff there after the
+startup.m file is called.
+
+- If you get linking errors (involving libgcc_s.so.6 or something like
+that), then add "export LD_PRELOAD=/lib/libgcc_s.so.1" to your .bashrc
+or .bash_login file (or whatever your shell is)
+
+- If you need libstdc++5, look here:
+ http://packages.debian.org/stable/base/libstdc++5
+
+- If working with a torus or cylinder or anything that has a wrapped
+dimension, you may encounter problems with homcubes at high depths
+("error reading argument -w34728" or something), then change the type
+of "coordinate" in chomp/include/chomp/cubes/pointset.h from "short
+int" to "int" and recompile.  This may have been fixed in the official
+release by now.
+
+- If you get annoying dijkstra debug output from GAIO, like:
+----------------------------------------------------------------------
+dijkstra: info: no 1-edgeweight any more.src = 0
+dest = 1
+
+length: 12.000000
+----------------------------------------------------------------------
+then you probably want to suppress it.  If you have GAIO 2.2.8 or
+earlier, this requires recompiling GAIO, or at least the
+gaio-2.2.8/matlab/dijkstra.c file.  You'll want to set 'debug' to 0
+instead of 1.  If you have GAIO 2.2.10, you can simply call the
+function with an extra argument of 0, which will have the same effect.
+
