@@ -28,10 +28,10 @@ function map = mistpuff(map, depth)
     
 	boxes = map.tree.boxes(-1);				    % 11/18/2006
     [I, I_f] = graph_mis_puff(map.P, map.Adj);	% 11/18/2006
-% 	X = intersect(onebox(I, map.Adj), I_f);	    % candidates for exit set
+ 	X = intersect(onebox(I, map.Adj), I_f);	    % candidates for exit set
 % 	X_img = find(map.P*flags(X, n));			% image of exit set boxes
 %   S = union(I, union(X, X_img));
-    S = union(I, mapimage(map.P,I));
+    S = union(I, mapimage(map.P,X));
     
     inv_bits = repmat('0', [1 n]);
     inv_bits(S) = '1';					% 11/18/2006
