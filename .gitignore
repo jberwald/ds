@@ -1,0 +1,9 @@
+# Can ignore specific files
+chkmvmap.cub
+
+# Use wildcards as well
+*~
+
+# Can also ignore all directories and files in a directory.
+babydata/*
+data/*
