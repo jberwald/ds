@@ -37,7 +37,7 @@ function [SM M_inv G_inv probedges] = ...
   convert = @(E) edge2num(E,length(G_inv))';
   numids = cellfun(convert, probedges, 'uniformoutput', 0);
 
-  [edges e c] = search_edges(SM,numids,[],[],[],-1,50000);
+  [edges e c] = search_edges(SM,numids,[],[],[],-1,100000);
   edges = num2edge(edges,length(G_inv))';
 
   if (c == 0)

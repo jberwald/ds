@@ -8,7 +8,6 @@ function mapobj = init_henon
 
 end
 
-
 function [center radius] = get_box(params)
 
   center = [0 0];
