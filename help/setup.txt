@@ -13,7 +13,7 @@ GAIO:   currently unavailable?
 
 1.1. CHomP
 
-You will probably need to compile CHomP, a sometimes tricky task.  A
+nYou will probably need to compile CHomP, a sometimes tricky task.  A
 few problems which may come up and their solutions:
 
   Problem: 'EOF' undefined errors in compile, or other similar errors
@@ -98,3 +98,9 @@ gaio-2.2.8/matlab/dijkstra.c file.  You'll want to set 'debug' to 0
 instead of 1.  If you have GAIO 2.2.10, you can simply call the
 function with an extra argument of 0, which will have the same effect.
 
+- If you get annoyed by Intlab's startup routine, comment out this
+portion of the startintlab.m function:
+  %  intvalinit('license')
+  %  intlablogo([0:4:32 32:-4:24 24:4:32])
+  %  pause(0.5)
+  %  close
