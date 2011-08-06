@@ -1,14 +1,17 @@
 function plot_1d_plats(printp)
 
-load aprepdat							% plats
-load apapprox							% estimates
+load aprepdat		% plats; run generate_ap_plats if not there
+load apapprox		% estimates; run dat20 if the file isn't there
 
 if (nargin < 1)
   printp = 0;
 end
 
+%ents = [0.6374 0.6373 0.6392 0.6404, 0.6430, 0.6459, 0.6467, 0.6527, 0.6718, ...
+%		0.6774, 0.6814, 0.6893, 0.6903, 0.6903, 0.6922, 0.6931];
+
 ents = [0.6374 0.6373 0.6392 0.6404, 0.6430, 0.6459, 0.6467, 0.6527, 0.6718, ...
-		0.6774, 0.6814, 0.6893, 0.6903, 0.6903, 0.6922, 0.6931];
+		0.6774, 0.6814, 0.6893, 0.6893, 0.6893, 0.6893, 0.6931];
 
 y = zeros(1,2*length(ents)+2);
 x = zeros(1,2*length(ents)+2);
@@ -22,11 +25,11 @@ est_col = 'b';
 lb_col = [0 1 0];
 lb_col2 = [0.8 1 0.8];
 
-
-for i = 1 : length(ents)-1
-  rectangle('position', [ap_plats(i,2),0,ap_plats(i+1,1)-ap_plats(i,2),ents(i)],...
-			'facecolor', lb_col2, 'linestyle', 'none')
-end
+%% taking out the light green for now
+% for i = 1 : length(ents)-1
+%   rectangle('position', [ap_plats(i,2),0,ap_plats(i+1,1)-ap_plats(i,2),ents(i)],...
+% 			'facecolor', lb_col2, 'linestyle', 'none')
+% end
 
 for i = 1 : length(ents)
   rectangle('position', [ap_plats(i,1),0,ap_plats(i,2)-ap_plats(i,1),ents(i)],...
