@@ -1,4 +1,7 @@
 function [reps R Adj] = pick_reps(tree,Adj)  
+% function [reps R Adj] = pick_reps(tree,Adj)  
+% tree = hyperbolic plateaus of henon
+
   boxes = tree.boxes(-1);
   d = tree.dim;  
   Adj = adj_multidepth(tree);

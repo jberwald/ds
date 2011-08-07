@@ -1,11 +1,13 @@
 function tex_symbol_matrix(T,fid,bold)
-% tex_plateau(plat_num,data)
-% data: {R G M SM X A I}
+% function tex_symbol_matrix(T,fid,bold)
+% T -- matrix
+% fid -- file id
+% bold -- true iff 1's should be bold and 0's should be gray
 
   fprintf(fid,'\\kbordermatrix{\n');
   fprintf(fid,'    & ');
   
-  s = printsyms(1:length(T));
+  s = tex_symbols(1:length(T));
   fprintf(fid,[s '\\ \n']);	% need an extra set of \\ b/c of escape funkiness
   
   for row = 1:length(T)

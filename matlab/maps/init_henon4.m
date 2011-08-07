@@ -17,18 +17,14 @@ function [center radius] = get_box(params)
   R = (B + sqrt(B^2 + 4*A));
   R = sup(R);
   
-  radius = [R*2 R];                     % we've scaled the x direction...
+  radius = [R 2*R];                     % we've scaled the y direction...
 end
 
 
 function map = the_map(params)
 
-% This computes the interval image of the SCALED Henon map
-% H(x,y) = ( (a - (g(y)x)^2 + b*y)/g(g(y)x), g(y)x ) where x, y, a, b are intervals.
-% here g(y) = C
-  C=0.5;
-  map = @(v) [ params(1)/C - C*(v(1))^2 + params(2)*v(2)/C ...
-			   C*v(1) ];
+  map = @(v) [ params(1) - (v(1))^2 + params(2)*v(2) ...
+			   v(1) ];
   
 end
 
