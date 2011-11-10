@@ -27,19 +27,53 @@
 function [SM M_inv G_inv probedges] = ...
 	  reduce_index_map(M, G, min_entropy, options)
 
-  [M_inv notinv] = restrict_to_inv(M);  % Thm: can use smaller rep for index
-  G_inv = trim_generators(G,notinv);    % get rid of transient generators
-  lef =  Lefschetzer(M_inv,G_inv);
-  lef = computeBadEdgeSets(lef,30);
-  probedges = getBadEdgeSets(lef);
-  SM = contract_map(G_inv,M_inv);                      
+  % default values: no cutoff, no options
+  if nargin < 3:
+    min_entropy = 0;
+  end
+  if nargin < 4:
+    options = struct;
+  end
+  
+  % 1. Remove transient generators.
+  % Theorem: we can use a smaller shift equivalence representative for the
+  % index map.  We compute this representative using the same graph_mis
+  % routine used to find a graph invariant set.
+  [M_inv notinv] = restrict_to_inv(M);
+  G_inv = trim_generators(G,notinv);
+  
+  % 2. Compute "upper bound" symbol matrix.
+  % As a start to computing the final symbol matrix SM, contract all
+  % generators within each region -- that is, if any generator from region i
+  % maps (with any nonzero coefficient!) to a generator from region j, add
+  % the edge (j,i).  This is the most optimistic symbol transition matrix
+  % possible, but we will refine it by removing bad edges.
+  SM = contract_map(G_inv,M_inv);
+  
+  % 3. Compute problem edge sets
+  % This is a collection BES = {E_i} of "bad edge sets", where each E_i =
+  % {e_1, e_2, ...} is just a list of edges.  The important property is that
+  % if at least one edge from each edge set E_i is removed from SM, then the
+  % resulting symbol matrix has been rigorously verified.  In CS parlance, we
+  % need only cut a hitting set of BES -- a set E such that E\cap E_i\neq
+  % \emptyset for all i.  Here 'probedges' is this collection BES.
+  lef =  Lefschetzer(M_inv,G_inv);      
+  lef = computeBadEdgeSets(lef,30);     % figure out what edge sets to cut
+  probedges = getBadEdgeSets(lef);      % extract the edge sets
+  convert = @(E) edge2num(E,length(G_inv))'; % hash function
+  numids = cellfun(convert, probedges, 'uniformoutput', 0); % hash each edge
 
-  convert = @(E) edge2num(E,length(G_inv))';
-  numids = cellfun(convert, probedges, 'uniformoutput', 0);
-
+  % 4. Find the optimal edge set to cut
+  % By optimal, we mean maximal entropy -- we wish to find the hitting set E
+  % such that h(SM-E) is maximized.  The arguments to this function are funny
+  % because it's written recursively.  Basically, search_edges is an
+  % exhaustive search with pruning.
   [edges e c] = search_edges(SM,numids,[],[],[],-1,100000);
   edges = num2edge(edges,length(G_inv))';
 
+  % It is technically possible that no such edge set E was found... instead
+  % of aborting though, we should probably just cut E_i(1) for all i (the
+  % first edge in each set.  But reallly this shouldn't even happen anyway.
   if (c == 0)
 	disp('\n search_edges reached cutoff time');
 	if (isempty(edges))					% didn't find a valid edge set
@@ -48,8 +82,13 @@ function [SM M_inv G_inv probedges] = ...
 	end
   end
   
-  SM = kill_edges(SM,edges);			% kill the edges
-  SM = restrict_to_sccs(SM);  % can't prove transient edges or one-way connections
+  % 5. Cut and trim SM
+  % First, we cut the edges we were supposed to.  But also, we must restrict
+  % SM to the strongly-connected components, since we can't actually prove
+  % one-way connections or transient edges -- only components made of cycles
+  % can be verified.
+  SM = kill_edges(SM,edges);            % kill the edges
+  SM = restrict_to_sccs(SM);            % can't prove one-way connections
 
 end
 
